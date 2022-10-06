@@ -1,7 +1,7 @@
 #include "TilemapComponent.h"
 #include "Engine.h"
 
-namespace  neu
+namespace  boogleborg
 {
     void TilemapComponent::Initialize()
     {

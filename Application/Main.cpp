@@ -1,25 +1,62 @@
 #include "Engine.h" 
 #include <iostream> 
 
-int main()
+int main(int argc, char** argv)
 {
-	neu::InitializeMemory();
+	boogleborg::InitializeMemory();
 
-	neu::Engine::Instance().Initialize();
-	neu::Engine::Instance().Register();
+	boogleborg::Engine::Instance().Initialize();
+	boogleborg::Engine::Instance().Register();
 
-	neu::g_renderer.CreateWindow("Neumont", 800, 600);
+	boogleborg::g_renderer.CreateWindow("Triangulator", 800, 800);
+
+	float angle = 0;
+	boogleborg::Vector2 position;
 
 	bool quit = false;
 	while (!quit)
 	{
-		neu::Engine::Instance().Update();
+		boogleborg::Engine::Instance().Update();
 
-		if (neu::g_inputSystem.GetKeyState(neu::key_escape) == neu::InputSystem::KeyState::Pressed) quit = true;
+		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_escape) == boogleborg::InputSystem::KeyState::Pressed) quit = true;
 
-		neu::g_renderer.BeginFrame();
-		neu::g_renderer.EndFrame();
+		boogleborg::g_renderer.BeginFrame();
+
+		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_left) == boogleborg::InputSystem::KeyState::Held)
+		{
+			position.x -= boogleborg::g_time.deltaTime;
+		}
+		
+		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_right) == boogleborg::InputSystem::KeyState::Held)
+		{
+			position.x += boogleborg::g_time.deltaTime;
+		}
+
+		angle += 90.0f * boogleborg::g_time.deltaTime;
+
+		glPushMatrix();
+
+		glScalef(0.5f,0.5f,0.5f);
+		//glRotatef(angle, 0, 0, 1);
+		glTranslatef(position.x, position.y, 0);
+
+		glBegin(GL_TRIANGLES);
+
+		//glColor3f(1.0f, 0.0f, 0.0f);
+		glVertex2f(-1.0f, -1.0f);
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glVertex2f(0.0f, 1.0f);
+		glColor3f(0.0f, 0.0f, 1.0f);
+		glVertex2f(1.0f, -1.0f);
+
+		glEnd();
+
+		glPopMatrix();
+
+		boogleborg::g_renderer.EndFrame();
 	}
 
-	neu::Engine::Instance().Shutdown();
+	boogleborg::Engine::Instance().Shutdown();
+
+	return 0;
 }

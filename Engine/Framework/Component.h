@@ -1,7 +1,7 @@
 #pragma once
 #include "GameObject.h"
 
-namespace neu
+namespace boogleborg
 {
 	class Actor;
 

@@ -3,7 +3,7 @@
 #include "Components/RenderComponent.h"
 #include "Engine.h"
 
-namespace neu
+namespace boogleborg
 {
 	Actor::Actor(const Actor& other)
 	{

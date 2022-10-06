@@ -7,7 +7,7 @@
 #include <iostream>
 #include <sstream>
 
-namespace neu
+namespace boogleborg
 {
 	Model::Model(const std::string& filename)
 	{
@@ -31,8 +31,8 @@ namespace neu
 		// draw model points
 		for (size_t i = 0; i < m_points.size() - 1; i++)
 		{
-			neu::Vector2 p1 = Vector2::Rotate((m_points[i] * scale), angle) + position;
-			neu::Vector2 p2 = Vector2::Rotate((m_points[i + 1] * scale), angle) + position;
+			boogleborg::Vector2 p1 = Vector2::Rotate((m_points[i] * scale), angle) + position;
+			boogleborg::Vector2 p2 = Vector2::Rotate((m_points[i + 1] * scale), angle) + position;
 
 			renderer.DrawLine(p1, p2, m_color);
 		}
@@ -45,8 +45,8 @@ namespace neu
 
 		for (size_t i = 0; i < m_points.size() - 1; i++)
 		{
-			neu::Vector2 p1 = mx * m_points[i];
-			neu::Vector2 p2 = mx * m_points[i + 1];
+			boogleborg::Vector2 p1 = mx * m_points[i];
+			boogleborg::Vector2 p2 = mx * m_points[i + 1];
 
 			renderer.DrawLine(p1, p2, m_color);
 		}
@@ -57,7 +57,7 @@ namespace neu
 	{
 		std::string buffer;
 
-		if (!neu::ReadFile(filename, buffer))
+		if (!boogleborg::ReadFile(filename, buffer))
 		{
 			LOG("Error could not load model %s", filename.c_str());
 			return false;

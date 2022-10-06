@@ -2,7 +2,7 @@
 #include "Framework/Component.h"
 #include "Math/Vector2.h"
 
-namespace neu
+namespace boogleborg
 {
 	class PhysicsComponent : public Component
 	{

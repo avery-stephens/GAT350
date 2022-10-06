@@ -3,7 +3,7 @@
 #include "Math/Rect.h"
 #include "Math/Vector2.h"
 
-namespace neu
+namespace boogleborg
 {
 	class Renderer;
 

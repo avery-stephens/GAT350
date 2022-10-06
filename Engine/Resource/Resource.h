@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-namespace neu
+namespace boogleborg
 {
 	class Resource
 	{

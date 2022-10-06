@@ -4,7 +4,7 @@
 #include <SDL.h>
 #include <SDL_ttf.h>
 
-namespace neu
+namespace boogleborg
 {
 	Text::~Text()
 	{

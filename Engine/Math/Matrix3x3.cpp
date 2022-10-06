@@ -1,6 +1,6 @@
 #include "Matrix3x3.h"
 
-namespace neu
+namespace boogleborg
 {
 	// 1 0 0
 	// 0 1 0

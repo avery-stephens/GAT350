@@ -7,7 +7,7 @@
 struct _TTF_Font;
 struct SDL_Surface;
 
-namespace neu
+namespace boogleborg
 {
 	struct Color;
 

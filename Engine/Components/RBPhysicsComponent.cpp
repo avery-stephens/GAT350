@@ -1,7 +1,7 @@
 #include "RBPhysicsComponent.h"
 #include "Engine.h"
 
-namespace neu
+namespace boogleborg
 {
 	RBPhysicsComponent::~RBPhysicsComponent()
 	{

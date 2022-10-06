@@ -4,7 +4,7 @@
 
 struct SDL_Texture;
 
-namespace neu
+namespace boogleborg
 {
 	class Font;
 	class Renderer;

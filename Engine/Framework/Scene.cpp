@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <iostream>
 
-namespace neu
+namespace boogleborg
 {
 	void Scene::Initialize()
 	{

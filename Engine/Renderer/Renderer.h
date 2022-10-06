@@ -3,10 +3,14 @@
 #include "Math/Color.h"
 #include "Math/Matrix3x3.h"
 
+#include <glad/glad.h> 
+#include <SDL.h>
+
 struct SDL_Renderer;
 struct SDL_Window;
 
-namespace neu
+
+namespace boogleborg
 {
 	class Texture;
 	struct Transform;
@@ -52,6 +56,7 @@ namespace neu
 
 		Matrix3x3 m_view;
 		Matrix3x3 m_viewport;
+		SDL_GLContext m_context;
 
 		SDL_Renderer* m_renderer = nullptr;
 		SDL_Window* m_window = nullptr;

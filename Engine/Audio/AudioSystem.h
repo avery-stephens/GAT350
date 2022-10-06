@@ -9,7 +9,7 @@ namespace FMOD
 	class Sound;
 }
 
-namespace neu
+namespace boogleborg
 {
 	class AudioSystem
 	{

@@ -5,7 +5,7 @@
 #include <memory>
 #include <cstdarg>
 
-namespace neu
+namespace boogleborg
 {
 	class ResourceManager
 	{

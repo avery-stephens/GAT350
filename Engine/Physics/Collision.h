@@ -1,6 +1,6 @@
 #pragma once
 
-namespace neu
+namespace boogleborg
 {
 	class Actor;
 

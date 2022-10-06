@@ -2,7 +2,7 @@
 #include "RenderComponent.h"
 #include <map>
 
-namespace neu
+namespace boogleborg
 {
 	class Texture;
 

@@ -3,7 +3,7 @@
 #include <map>
 #include <list>
 
-namespace neu
+namespace boogleborg
 {
 	class EventManager
 	{

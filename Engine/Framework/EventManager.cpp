@@ -1,21 +1,21 @@
 #include "EventManager.h"
 
-void neu::EventManager::Initialize()
+void boogleborg::EventManager::Initialize()
 {
 	//
 }
 
-void neu::EventManager::Shutdown()
+void boogleborg::EventManager::Shutdown()
 {
 	//
 }
 
-void neu::EventManager::Update()
+void boogleborg::EventManager::Update()
 {
 	//
 }
 
-void neu::EventManager::Subscribe(const std::string& name, Event::functionPtr function, GameObject* receiver)
+void boogleborg::EventManager::Subscribe(const std::string& name, Event::functionPtr function, GameObject* receiver)
 {
 	Observer observer;
 	observer.receiver = receiver;
@@ -24,7 +24,7 @@ void neu::EventManager::Subscribe(const std::string& name, Event::functionPtr fu
 	m_events[name].push_back(observer);
 }
 
-void neu::EventManager::Unsubscribe(const std::string& name, GameObject* receiver)
+void boogleborg::EventManager::Unsubscribe(const std::string& name, GameObject* receiver)
 {
 	// get list of observers for event
 	auto& observers = m_events[name];
@@ -40,7 +40,7 @@ void neu::EventManager::Unsubscribe(const std::string& name, GameObject* receive
 	}
 }
 
-void neu::EventManager::Notify(const Event& event)
+void boogleborg::EventManager::Notify(const Event& event)
 {
 	auto& observers = m_events[event.name];
 	for (auto& observer : observers)

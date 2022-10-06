@@ -1,6 +1,6 @@
 #include "Engine.h"
 
-namespace neu
+namespace boogleborg
 {
 	Renderer g_renderer;
 	InputSystem g_inputSystem;

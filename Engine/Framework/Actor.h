@@ -5,7 +5,7 @@
 
 #include <vector>
 
-namespace neu
+namespace boogleborg
 {
 	class Scene;
 	class Renderer;

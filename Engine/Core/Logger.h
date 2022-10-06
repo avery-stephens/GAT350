@@ -1,13 +1,13 @@
 #pragma once
 
 #ifdef _DEBUG
-	#define	LOG(format, ...) neu::g_logger.Log(format, __VA_ARGS__)
+	#define	LOG(format, ...) boogleborg::g_logger.Log(format, __VA_ARGS__)
 #else
 	#define LOG(format, ...) ((void)0)
 #endif // _DEBUG
 
 
-namespace neu
+namespace boogleborg
 {
 	class Logger
 	{

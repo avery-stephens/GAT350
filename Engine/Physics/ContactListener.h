@@ -1,7 +1,7 @@
 #pragma once
 #include "box2d/box2d.h"
 
-namespace neu
+namespace boogleborg
 {
 	class ContactListener : public b2ContactListener
 	{

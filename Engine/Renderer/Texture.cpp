@@ -5,7 +5,7 @@
 #include <SDL_image.h>
 #include <cstdarg>
 
-namespace neu
+namespace boogleborg
 {
     Texture::~Texture()
     {
@@ -80,7 +80,7 @@ namespace neu
         return true;
     }
 
-    neu::Vector2 Texture::GetSize() const
+    boogleborg::Vector2 Texture::GetSize() const
     {
         SDL_Point point;
         SDL_QueryTexture(m_texture, nullptr, nullptr, &point.x, &point.y);

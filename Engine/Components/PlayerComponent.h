@@ -3,7 +3,7 @@
 #include "Physics/Collision.h"
 #include "CharacterComponent.h"
 
-namespace neu
+namespace boogleborg
 {
 	class PlayerComponent : public CharacterComponent
 	{

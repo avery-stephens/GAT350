@@ -3,7 +3,7 @@
 #include <filesystem>
 #include <fstream>
 
-namespace neu
+namespace boogleborg
 {
 	void SetFilePath(const std::string& pathname)
 	{

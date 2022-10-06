@@ -2,7 +2,7 @@
 #include "Framework/Component.h"
 #include "Math/Matrix3x3.h"
 
-namespace neu
+namespace boogleborg
 {
 	class CameraComponent : public Component
 	{

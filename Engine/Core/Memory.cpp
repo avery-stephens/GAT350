@@ -1,6 +1,6 @@
 #include "Memory.h"
 
-namespace neu
+namespace boogleborg
 {
 	void InitializeMemory()
 	{

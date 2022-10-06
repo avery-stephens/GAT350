@@ -6,7 +6,7 @@
 #include "Math/Rect.h"
 #include <fstream>
 
-namespace neu::json
+namespace boogleborg::json
 {
 	bool Load(const std::string& filename, rapidjson::Document& document)
 	{

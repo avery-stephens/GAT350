@@ -2,7 +2,7 @@
 #include "Framework/Actor.h"
 #include "Engine.h"
 
-namespace neu
+namespace boogleborg
 {
     void CameraComponent::Initialize()
     {

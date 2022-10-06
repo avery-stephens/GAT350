@@ -3,7 +3,7 @@
 #include <iostream>
 #include <windows.h>
 
-namespace neu
+namespace boogleborg
 {
 	Logger g_logger;
 

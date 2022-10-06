@@ -5,9 +5,9 @@
 #include <memory>
 
 #define VECTOR2_TO_B2VEC2(vec) (*(b2Vec2*)(&vec))
-#define B2VEC2_TO_VECTOR2(vec) (*(neu::Vector2*)(&vec))
+#define B2VEC2_TO_VECTOR2(vec) (*(boogleborg::Vector2*)(&vec))
 
-namespace neu
+namespace boogleborg
 {
 	class ContactListener;
 

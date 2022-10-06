@@ -1,7 +1,7 @@
 #include "PhysicsComponent.h"
 #include "Engine.h"
 
-namespace neu
+namespace boogleborg
 {
 	void PhysicsComponent::Update()
 	{

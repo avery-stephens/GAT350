@@ -2,7 +2,7 @@
 #include "Core/Logger.h"
 #include <fmod.hpp>
 
-namespace neu
+namespace boogleborg
 {
 	void AudioSystem::Initialize()
 	{

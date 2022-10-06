@@ -2,7 +2,7 @@
 #include "PhysicsComponent.h"
 #include "Physics/PhysicsSystem.h"
 
-namespace neu
+namespace boogleborg
 {
 	class RBPhysicsComponent : public PhysicsComponent
 	{

@@ -1,7 +1,7 @@
 #pragma once
 #include <random>
 
-namespace neu
+namespace boogleborg
 {
 	inline void seedRandom(int seed) { srand(seed); }
 

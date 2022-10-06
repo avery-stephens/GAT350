@@ -45,7 +45,7 @@
 #include <list>
 #include <variant>
 
-namespace neu
+namespace boogleborg
 {
 	extern Renderer g_renderer;
 	extern InputSystem g_inputSystem;

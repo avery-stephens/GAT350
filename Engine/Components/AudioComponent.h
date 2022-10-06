@@ -2,7 +2,7 @@
 #include "Framework/Component.h"
 #include "Audio/AudioChannel.h"
 
-namespace neu
+namespace boogleborg
 {
 	class AudioComponent : public Component
 	{

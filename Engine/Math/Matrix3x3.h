@@ -3,7 +3,7 @@
 #include "Vector3.h"
 
 
-namespace neu
+namespace boogleborg
 {
 	struct Matrix3x3
 	{

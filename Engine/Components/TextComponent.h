@@ -4,7 +4,7 @@
 #include "Math/Vector2.h"
 #include <memory>
 
-namespace neu
+namespace boogleborg
 {
 	class Font;
 	class Texture;

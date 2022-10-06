@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 
-namespace neu
+namespace boogleborg
 {
 	struct Color
 	{

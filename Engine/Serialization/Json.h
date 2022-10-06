@@ -3,9 +3,9 @@
 #include <string>
 #include <vector>
 
-#define READ_DATA(value, data) neu::json::Get(value, #data, data)
+#define READ_DATA(value, data) boogleborg::json::Get(value, #data, data)
 
-namespace neu
+namespace boogleborg
 {
 	struct Vector2;
 	struct Color;

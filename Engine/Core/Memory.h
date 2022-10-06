@@ -12,7 +12,7 @@
 	#define new new
 #endif // _DEBUG
 
-namespace neu
+namespace boogleborg
 {
 	void InitializeMemory();
 }

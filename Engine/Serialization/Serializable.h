@@ -1,7 +1,7 @@
 #pragma once
 #include "Json.h"
 
-namespace neu
+namespace boogleborg
 {
 	class ISerializable
 	{

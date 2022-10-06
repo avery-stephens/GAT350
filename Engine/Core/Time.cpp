@@ -1,6 +1,6 @@
 #include "Time.h"
 
-namespace neu
+namespace boogleborg
 {
 	void Time::Tick()
 	{

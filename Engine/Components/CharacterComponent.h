@@ -3,7 +3,7 @@
 #include "Physics/Collision.h"
 #include "Framework/Event.h"
 
-namespace neu
+namespace boogleborg
 {
 	class CharacterComponent : public Component, public ICollision, public INotify
 	{

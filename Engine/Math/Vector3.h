@@ -1,7 +1,7 @@
 #pragma once
 #include <cmath>
 
-namespace neu
+namespace boogleborg
 {
 	struct Vector3
 	{

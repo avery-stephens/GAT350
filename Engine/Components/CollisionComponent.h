@@ -4,7 +4,7 @@
 #include "Physics/PhysicsSystem.h"
 #include <functional>
 
-namespace neu
+namespace boogleborg
 {
 	class CollisionComponent : public Component, public ICollision
 	{

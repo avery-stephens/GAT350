@@ -4,7 +4,7 @@
 #include "MathUtils.h"
 #include "Serialization/Serializable.h"
 
-namespace neu
+namespace boogleborg
 {
 	struct Transform : public ISerializable
 	{

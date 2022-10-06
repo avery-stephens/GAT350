@@ -1,6 +1,6 @@
 #include "Color.h"
 
-namespace neu
+namespace boogleborg
 {
 	const Color Color::white{ 255, 255, 255, 255 };
 	const Color Color::black{ 0, 0, 0, 255 };

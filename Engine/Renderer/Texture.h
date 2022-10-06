@@ -7,7 +7,7 @@ struct SDL_Texture;
 struct SDL_Surface;
 // !! forward declaration for SDL pointers below (SDL likes to use structs)
 
-namespace neu
+namespace boogleborg
 {
 	// !! forward declaration for Renderer below
 	class Renderer;

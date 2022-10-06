@@ -1,7 +1,7 @@
 #include "AudioChannel.h"
 #include "fmod.hpp"
 
-namespace neu
+namespace boogleborg
 {
 	bool AudioChannel::IsPlaying()
 	{

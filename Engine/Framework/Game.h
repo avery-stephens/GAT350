@@ -1,7 +1,7 @@
 #pragma once
 #include <memory>
 
-namespace neu
+namespace boogleborg
 {
 	class Renderer;
 	class Scene;

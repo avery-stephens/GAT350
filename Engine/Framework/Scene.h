@@ -3,7 +3,7 @@
 #include <list>
 #include <memory>
 
-namespace neu
+namespace boogleborg
 {
 	// forward declaration
 	class Actor;

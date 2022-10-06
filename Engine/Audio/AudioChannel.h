@@ -6,7 +6,7 @@ namespace FMOD
 	class Channel;
 }
 
-namespace neu
+namespace boogleborg
 {
 	class AudioChannel
 	{

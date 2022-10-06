@@ -1,11 +1,11 @@
 #include "Transform.h"
 
-bool neu::Transform::Write(const rapidjson::Value& value) const
+bool boogleborg::Transform::Write(const rapidjson::Value& value) const
 {
     return true;
 }
 
-bool neu::Transform::Read(const rapidjson::Value& value)
+bool boogleborg::Transform::Read(const rapidjson::Value& value)
 {
     READ_DATA(value, position);
     READ_DATA(value, scale);

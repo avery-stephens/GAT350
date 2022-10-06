@@ -1,6 +1,6 @@
 #pragma once
 
-namespace neu
+namespace boogleborg
 {
 	template<class T>
 	class Singleton

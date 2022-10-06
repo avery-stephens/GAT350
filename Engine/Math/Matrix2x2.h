@@ -1,7 +1,7 @@
 #pragma once
 #include "Vector2.h"
 
-namespace neu
+namespace boogleborg
 {
 	struct Matrix2x2
 	{

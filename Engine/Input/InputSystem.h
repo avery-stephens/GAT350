@@ -6,7 +6,7 @@
 #include <array>
 #include <string>
 
-namespace neu
+namespace boogleborg
 {
 	class InputSystem
 	{

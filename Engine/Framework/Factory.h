@@ -4,7 +4,7 @@
 #include <memory>
 #include <map>
 
-namespace neu
+namespace boogleborg
 {
 	class GameObject;
 

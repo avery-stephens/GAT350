@@ -1,7 +1,7 @@
 #pragma once
 #include "RenderComponent.h"
 
-namespace neu
+namespace boogleborg
 {
 	class Model;
 
