@@ -11,23 +11,20 @@ float points[] = {
 	0.5f,  -0.5f,  0.0f
 };
 
-const char* vertex_shader =
-"#version 430 core\n"
-"in vec3 position;"
-"void main() {"
-"  gl_Position = vec4(position, 1.0);"
-"}";
-
-const char* fragment_shader =
-"#version 430 core\n"
-"out vec4 color;"
-"void main() {"
-"  color = vec4(1.0, 1.0, 1.0, 1.0);"
-"}";
+boogleborg::Vector3 color[] =
+{
+	{ 0, 0, 1}, //rgb
+	{ 1, 0, 1},
+	{ 0, 1, 0},
+	{ 0, 0, 1},
+	{ 0, 1, 1},
+	{ 1, 1, 1}
+};
 
 int main(int argc, char** argv)
 {
 	boogleborg::InitializeMemory();
+	boogleborg::SetFilePath("../Assets");
 
 	boogleborg::Engine::Instance().Initialize();
 	boogleborg::Engine::Instance().Register();
@@ -38,31 +35,46 @@ int main(int argc, char** argv)
 	//boogleborg::Vector2 position;
 
 	// create vertex buffer
-	GLuint vbo = 0;
-	glGenBuffers(1, &vbo);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	GLuint pvbo = 0;
+	glGenBuffers(1, &pvbo);
+	glBindBuffer(GL_ARRAY_BUFFER, pvbo);
 	glBufferData(GL_ARRAY_BUFFER, 18 * sizeof(float), points, GL_STATIC_DRAW);
+
+	GLuint cvbo = 0;
+	glGenBuffers(1, &cvbo);
+	glBindBuffer(GL_ARRAY_BUFFER, cvbo);
+	glBufferData(GL_ARRAY_BUFFER, 18 * sizeof(boogleborg::Vector3), color, GL_STATIC_DRAW);
 
 	// create vertex array
 	GLuint vao = 0;
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
+
+	// position
 	glEnableVertexAttribArray(0);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBindBuffer(GL_ARRAY_BUFFER, pvbo);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+	
+	// color
+	glEnableVertexAttribArray(1);
+	glBindBuffer(GL_ARRAY_BUFFER, cvbo);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 
 	// create shader
-	GLuint vs = glCreateShader(GL_VERTEX_SHADER);
+	std::shared_ptr<boogleborg::Shader> vs = boogleborg::g_resources.Get<boogleborg::Shader>("Shaders/basic.vert", GL_VERTEX_SHADER);
+	std::shared_ptr<boogleborg::Shader> fs = boogleborg::g_resources.Get<boogleborg::Shader>("Shaders/basic.frag", GL_FRAGMENT_SHADER);
+
+	/*GLuint vs = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(vs, 1, &vertex_shader, NULL);
 	glCompileShader(vs);
 	GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(fs, 1, &fragment_shader, NULL);
-	glCompileShader(fs);
+	glCompileShader(fs);*/
 
 	// create program
 	GLuint program = glCreateProgram();
-	glAttachShader(program, fs);
-	glAttachShader(program, vs);
+	glAttachShader(program, fs->m_shader);
+	glAttachShader(program, vs->m_shader);
 	glLinkProgram(program);
 	glUseProgram(program);
 
