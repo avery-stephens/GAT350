@@ -26,5 +26,11 @@
     <None Include="..\Build\Assets\Shaders\basic.frag">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="..\Build\Assets\Shaders\basic.prog">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Build\Assets\Materials\sussy.mtrl">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

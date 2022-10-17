@@ -6,7 +6,7 @@ namespace boogleborg
 {
 	Shader::~Shader()
 	{
-		if (!m_shader)
+		if (m_shader)
 		{
 			glDeleteShader(m_shader);
 		}
@@ -57,8 +57,6 @@ namespace boogleborg
 			glDeleteShader(m_shader);
 			m_shader = 0;
 		}
-
-		return true;
 
 		return true;
 	}

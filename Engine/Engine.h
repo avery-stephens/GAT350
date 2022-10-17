@@ -9,6 +9,7 @@
 
 #include "Math/MathUtils.h"
 #include "Math/Random.h"
+#include "glm/glm.hpp"
 
 #include "Framework/Scene.h"
 #include "Framework/Game.h"
@@ -40,6 +41,8 @@
 #include "Renderer/Texture.h"
 #include "Renderer/Model.h"
 #include "Renderer/Shader.h"
+#include "Renderer/Program.h"
+#include "Renderer/Material.h"
 
 #include <memory>
 #include <vector>
