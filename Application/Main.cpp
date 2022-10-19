@@ -153,7 +153,8 @@ int main(int argc, char** argv)
 	glm::mat4 model{ 1 };
 	glm::mat4 projection = glm::perspective(45.0f, boogleborg::g_renderer.GetWidth() / (float)boogleborg::g_renderer.GetHeight(), 0.01f, 100.0f);
 
-	glm::vec3 cameraPosition = glm::vec3{ 0, 2, 2 };
+	glm::vec3 cameraPosition = glm::vec3{ 0, 0, 2 };
+	float speed = 2;
 
 	bool quit = false;
 	while (!quit)
@@ -162,12 +163,15 @@ int main(int argc, char** argv)
 		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_escape) == boogleborg::InputSystem::KeyState::Pressed) quit = true;
 
 		//add input to move camera
-		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_left) == boogleborg::InputSystem::KeyState::Held)
-		{
-			cameraPosition[0] = cameraPosition[0] - 0.05f;
-		}
+		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_left) == boogleborg::InputSystem::KeyState::Held) cameraPosition.x -= speed * boogleborg::g_time.deltaTime;
+		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_right) == boogleborg::InputSystem::KeyState::Held) cameraPosition.x += speed * boogleborg::g_time.deltaTime;
+		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_up) == boogleborg::InputSystem::KeyState::Held) cameraPosition.y += speed * boogleborg::g_time.deltaTime;
+		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_down) == boogleborg::InputSystem::KeyState::Held) cameraPosition.y -= speed * boogleborg::g_time.deltaTime;
+		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_pgup) == boogleborg::InputSystem::KeyState::Held) cameraPosition.z -= speed * boogleborg::g_time.deltaTime;
+		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_pgdown) == boogleborg::InputSystem::KeyState::Held) cameraPosition.z += speed * boogleborg::g_time.deltaTime;
+		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_enter) == boogleborg::InputSystem::KeyState::Held) cameraPosition = glm::vec3{ 0, 0, 2 };
 
-		glm::mat4 view = glm::lookAt(cameraPosition, glm::vec3{ 0, 0, 0 }, glm::vec3{ 0, 1, 0 });
+		glm::mat4 view = glm::lookAt(cameraPosition, cameraPosition + glm::vec3{ 0, 0, -1 }, glm::vec3{ 0, 1, 0 });
 		model = glm::eulerAngleXYZ(0.0f, boogleborg::g_time.time, 0.0f);
 		glm::mat4 mvp = projection * view * model;
 
