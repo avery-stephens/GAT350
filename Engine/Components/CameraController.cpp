@@ -7,7 +7,7 @@ namespace boogleborg
 	{
 		// update transform 
 
-		if (g_inputSystem.GetKeyState(key_left) == InputSystem::KeyState::Held)
+		if (g_inputSystem.GetKeyState(key_left) == InputSystem::KeyState::Held) 
 			m_owner->m_transform.position.x -= speed * g_time.deltaTime;
 
 		if (g_inputSystem.GetKeyState(key_right) == InputSystem::KeyState::Held)

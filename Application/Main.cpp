@@ -59,9 +59,9 @@ int main(int argc, char** argv)
 	boogleborg::g_renderer.CreateWindow("Triangulator", 800, 800);
 	LOG("Window Initialized...");
 
-	auto scene = std::make_unique<boogleborg::Scene>();
+	auto scene = boogleborg::g_resources.Get<boogleborg::Scene>("scenes/basic.scn");
 
-	rapidjson::Document document;
+	/*rapidjson::Document document;
 	bool success = boogleborg::json::Load("scenes/basic.scn", document);
 	if (!success)
 	{
@@ -71,7 +71,7 @@ int main(int argc, char** argv)
 	{
 		scene->Read(document);
 		scene->Initialize();
-	}
+	}*/
 
 	//auto m = boogleborg::g_resources.Get<boogleborg::Model>("models/spot.obj");
 

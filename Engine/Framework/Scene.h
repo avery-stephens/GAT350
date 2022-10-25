@@ -1,5 +1,6 @@
 #pragma once
 #include "Actor.h"
+#include "Engine.h"
 #include <list>
 #include <memory>
 
@@ -10,7 +11,7 @@ namespace boogleborg
 	class Renderer;
 	class Game;
 
-	class Scene : public GameObject, public ISerializable
+	class Scene : public GameObject, public ISerializable, public Resource
 	{
 	public:
 		Scene() = default;
@@ -22,6 +23,7 @@ namespace boogleborg
 
 		void Initialize() override;
 		void Update() override;
+		virtual bool Create(std::string name, ...) override;
 		void Draw(Renderer& renderer);
 
 		virtual bool Write(const rapidjson::Value& value) const override;
@@ -42,7 +44,7 @@ namespace boogleborg
 		Game* GetGame() { return m_game; }
 
 	private:
-		Game* m_game =nullptr;
+		Game* m_game = nullptr;
 		std::list<std::unique_ptr<Actor>> m_actors;
 	};
 

@@ -28,6 +28,21 @@ namespace boogleborg
 		}
 	}
 
+	bool Scene::Create(std::string name, ...)
+	{
+		rapidjson::Document document;
+		bool success = boogleborg::json::Load(name, document);
+		if (!success)
+		{
+
+			LOG("Could not load scene file (%s).", name.c_str());
+			return false;
+		}
+		Read(document);
+		Initialize();
+		return true;
+	}
+
 	void Scene::Draw(Renderer& renderer)
 	{
 		// get camera / set renderer view/projection 
@@ -96,7 +111,6 @@ namespace boogleborg
 				}
 			}
 		}
-		
 
 		return true;
 	}
