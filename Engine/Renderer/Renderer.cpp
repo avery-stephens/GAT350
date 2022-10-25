@@ -15,9 +15,6 @@ namespace boogleborg
 		SDL_Init(SDL_INIT_VIDEO);
 		IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
 		TTF_Init();
-
-		m_view = Matrix3x3::identity;
-		m_viewport = Matrix3x3::identity;
 	}
 
 	void Renderer::Shutdown()
@@ -97,7 +94,7 @@ namespace boogleborg
 
 	void Renderer::Draw(std::shared_ptr<Texture> texture, const Vector2& position, float angle, const Vector2& scale, const Vector2& registration)
 	{
-		Vector2 size = texture->GetSize();
+		/*Vector2 size = texture->GetSize();
 		size = size * scale;
 
 		Vector2 origin = size * registration;
@@ -110,13 +107,13 @@ namespace boogleborg
 		dest.h = (int)(size.y);
 
 		SDL_Point center{ (int)origin.x, (int)origin.y };
-				
+				*/
 		//SDL_RenderCopyEx(m_renderer, texture->m_texture, nullptr, &dest, angle, &center, SDL_FLIP_NONE);
 	}
 
 	void Renderer::Draw(std::shared_ptr<Texture> texture, const Transform& transform, const Vector2& registration)
 	{
-		Vector2 size = texture->GetSize();
+		/*Vector2 size = texture->GetSize();
 		size = size * transform.scale;
 
 		Vector2 origin = size * registration;
@@ -128,14 +125,14 @@ namespace boogleborg
 		dest.w = (int)(size.x);
 		dest.h = (int)(size.y);
 
-		SDL_Point center{ (int)origin.x, (int)origin.y };
+		SDL_Point center{ (int)origin.x, (int)origin.y };*/
 
 		//SDL_RenderCopyEx(m_renderer, texture->m_texture, nullptr, &dest, transform.rotation, &center, SDL_FLIP_NONE);
 	}
 
 	void Renderer::Draw(std::shared_ptr<Texture> texture, const Rect& source, const Transform& transform, const Vector2& registration, bool flipH)
 	{
-		Matrix3x3 mx = m_viewport * m_view * transform.matrix;
+		/*Matrix3x3 mx = m_viewport * m_view * transform.matrix;
 
 		Vector2 size = Vector2{ source.w, source.h };
 		size = size * mx.GetScale();
@@ -157,7 +154,7 @@ namespace boogleborg
 
 		SDL_Point center{ (int)origin.x, (int)origin.y };
 
-		SDL_RendererFlip flip = (flipH) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE;
+		SDL_RendererFlip flip = (flipH) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE;*/
 		//SDL_RenderCopyEx(m_renderer, texture->m_texture, &src, &dest, math::RadToDeg(mx.GetRotation()), &center, flip);
 	}
 

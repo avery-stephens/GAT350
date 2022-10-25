@@ -1,36 +1,6 @@
 #include "Engine.h" 
 #include <iostream> 
 
-//float points[] = {
-//	-1.0f, -1.0f,  0.0f,
-//	-1.0f,  1.0f,  0.0f,
-//	1.0f, -1.0f,  0.0f,
-//
-//	-1.0f,  1.0f,  0.0f,
-//	1.0f,  1.0f,  0.0f,
-//	1.0f,  -1.0f,  0.0f
-//};
-//
-//glm::vec3 color[] =
-//{
-//	{ 0, 0, 1}, //rgb
-//	{ 1, 0, 1},
-//	{ 1, 1, 0},
-//	{ 0, 0, 1},
-//	{ 0, 1, 1},
-//	{ 0, 1, 0}
-//};
-//
-//glm::vec2 texcoords[]
-//{
-//	{0,0},
-//	{0,1},
-//	{1,0},
-//	{0,1},
-//	{1,1},
-//	{1,0}
-//};
-
 float vertices[] = {
 	-0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
 	 0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
@@ -89,56 +59,24 @@ int main(int argc, char** argv)
 	boogleborg::g_renderer.CreateWindow("Triangulator", 800, 800);
 	LOG("Window Initialized...");
 
-	//float angle = 0;
-	//boogleborg::Vector2 position;
+	auto scene = std::make_unique<boogleborg::Scene>();
 
-	// create vertex buffer
-	/*GLuint pvbo = 0;
-	glGenBuffers(1, &pvbo);
-	glBindBuffer(GL_ARRAY_BUFFER, pvbo);
-	glBufferData(GL_ARRAY_BUFFER, 18 * sizeof(float), points, GL_STATIC_DRAW);
+	rapidjson::Document document;
+	bool success = boogleborg::json::Load("scenes/basic.scn", document);
+	if (!success)
+	{
+		LOG("error loading scene file %s.", "scenes/basic.scn");
+	}
+	else
+	{
+		scene->Read(document);
+		scene->Initialize();
+	}
 
-	GLuint cvbo = 0;
-	glGenBuffers(1, &cvbo);
-	glBindBuffer(GL_ARRAY_BUFFER, cvbo);
-	glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(glm::vec3), color, GL_STATIC_DRAW);
-
-	GLuint tvbo = 0;
-	glGenBuffers(1, &tvbo);
-	glBindBuffer(GL_ARRAY_BUFFER, tvbo);
-	glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(glm::vec2), texcoords, GL_STATIC_DRAW);*/
-
-	GLuint vbo = 0;
-	glGenBuffers(1, &vbo);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-	// create vertex array
-	GLuint vao = 0;
-	glGenVertexArrays(1, &vao);
-	glBindVertexArray(vao);
-
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-
-	// position
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
-
-	// color
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-
-	//uv
-	glEnableVertexAttribArray(2);
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-
-	//std::shared_ptr<boogleborg::Program> program = boogleborg::g_resources.Get<boogleborg::Program>("Shaders/basic.prog");
-	//program->Link();
-	//program->Use();
-
+	//auto m = boogleborg::g_resources.Get<boogleborg::Model>("models/spot.obj");
 
 	//create material
-	std::shared_ptr<boogleborg::Material> material = boogleborg::g_resources.Get<boogleborg::Material>("materials/sussy.mtrl");
+	std::shared_ptr<boogleborg::Material> material = boogleborg::g_resources.Get<boogleborg::Material>("materials/cow.mtrl");
 	material->Bind();
 
 	/*GLint uniform1 = glGetUniformLocation(program, "scale");
@@ -153,8 +91,22 @@ int main(int argc, char** argv)
 	glm::mat4 model{ 1 };
 	glm::mat4 projection = glm::perspective(45.0f, boogleborg::g_renderer.GetWidth() / (float)boogleborg::g_renderer.GetHeight(), 0.01f, 100.0f);
 
-	glm::vec3 cameraPosition = glm::vec3{ 0, 0, 2 };
+	glm::vec3 cameraPosition = glm::vec3{ 0, 0, 3 };
 	float speed = 2;
+
+	std::vector<boogleborg::Transform> transforms;
+	for (size_t i = 0; i < 1; i++)
+	{
+		transforms.push_back({ {0, 0, 0}, {0, 0, 0} });
+	}
+
+	/*boogleborg::Transform transforms[] =
+	{
+		{ {boogleborg::randomf(-10, 10), boogleborg::randomf(-15, 10), boogleborg::randomf(-10, 15)}, {0, boogleborg::randomf(360), 0} },
+		{ {2, 0, 0}, {0, 90, 90} },
+		{ {0, 2, -2}, {45, 90, 0} },
+		{ {2, -1, 0}, {90, 90, 0} }
+	};*/
 
 	bool quit = false;
 	while (!quit)
@@ -169,25 +121,31 @@ int main(int argc, char** argv)
 		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_down) == boogleborg::InputSystem::KeyState::Held) cameraPosition.y -= speed * boogleborg::g_time.deltaTime;
 		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_pgup) == boogleborg::InputSystem::KeyState::Held) cameraPosition.z -= speed * boogleborg::g_time.deltaTime;
 		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_pgdown) == boogleborg::InputSystem::KeyState::Held) cameraPosition.z += speed * boogleborg::g_time.deltaTime;
-		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_enter) == boogleborg::InputSystem::KeyState::Held) cameraPosition = glm::vec3{ 0, 0, 2 };
+		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_enter) == boogleborg::InputSystem::KeyState::Held) cameraPosition = glm::vec3{ 0, 0, 3 };
 
 		glm::mat4 view = glm::lookAt(cameraPosition, cameraPosition + glm::vec3{ 0, 0, -1 }, glm::vec3{ 0, 1, 0 });
-		model = glm::eulerAngleXYZ(0.0f, boogleborg::g_time.time, 0.0f);
-		glm::mat4 mvp = projection * view * model;
 
-		//program->SetUniform("scale", std::sin(boogleborg::g_time.time * 2));
-
-		material->GetProgram()->SetUniform("mvp", mvp);
+		scene->Update();
+		//model = glm::eulerAngleXYZ(0.0f, boogleborg::g_time.time, 0.0f);
 		
 		boogleborg::g_renderer.BeginFrame();
 
+		//m->m_vertexBuffer.Draw();
 
-		glDrawArrays(GL_TRIANGLES, 0, 36);
+		for (size_t i = 0; i < transforms.size(); i++)
+		{
+			transforms[i].rotation += glm::vec3{ 0, boogleborg::g_time.deltaTime, 0 };
+			glm::mat4 mvp = projection * view * (glm::mat4)transforms[i];
+			material->GetProgram()->SetUniform("mvp", mvp);
 
+			//vb->Draw();
+		}
+
+		scene->Draw(boogleborg::g_renderer);
 
 		boogleborg::g_renderer.EndFrame();
 	}
-
+	scene->RemoveAll();
 	boogleborg::Engine::Instance().Shutdown();
 
 	return 0;
