@@ -41,7 +41,7 @@ namespace boogleborg
 		operator glm::mat4 () const
 		{
 			glm::mat4 mxScale = glm::scale(scale);
-			glm::mat4 mxRotation = glm::eulerAngleXYZ(rotation.x, rotation.y, rotation.z);
+			glm::mat4 mxRotation = glm::eulerAngleXYZ(glm::radians(rotation.x), glm::radians(rotation.y), glm::radians(rotation.z));
 			glm::mat4 mxTranslation = glm::translate(position);
 
 			return { mxTranslation * mxRotation * mxScale };

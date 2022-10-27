@@ -9,6 +9,7 @@ out vec3 color;
  
 struct Light
 {
+	vec3 ambient;
 	vec3 color;
 	vec4 position;
 };
@@ -21,6 +22,7 @@ struct Material
  
 uniform Light light;
 uniform Material material;
+
 uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
@@ -28,6 +30,8 @@ uniform mat4 projection;
 void main()
 {
 	texcoord = vtexcoord;
+
+	vec3 ambient = light.ambient * material.color;
  
 	// DIFFUSE
 	// create model view matrix
@@ -50,11 +54,11 @@ void main()
 		vec3 reflection = reflect(-light_dir, normal);
 		vec3 view_dir = normalize(-vec3(position));
 		intensity = max(dot(reflection, view_dir), 0);
-		intensity = pow(intensity, 32.0);
-		specular = light.color * intensity;
+		intensity = pow(intensity, material.shininess);
+		specular = light.color * material.color * intensity;
 	}
  
-	color = vec3(0.2) + diffuse + specular;
+	color = ambient + diffuse + specular;
  
 	mat4 mvp = projection * view * model;
 	gl_Position = mvp * vec4(vposition, 1.0);

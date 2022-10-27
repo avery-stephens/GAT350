@@ -77,7 +77,7 @@ int main(int argc, char** argv)
 		auto actor = scene->GetActorFromName("Cow");
 		if (actor)
 		{
-			actor->m_transform.rotation.y += boogleborg::g_time.deltaTime;
+			actor->m_transform.rotation.y += 90.0f * boogleborg::g_time.deltaTime;
 		}
 		scene->Update();
 

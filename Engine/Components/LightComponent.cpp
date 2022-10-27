@@ -14,6 +14,7 @@ namespace boogleborg
 		for (auto& program : programs)
 		{
 			//program->Use();
+			program->SetUniform("light.ambient", glm::vec3{ 0.2f });
 			program->SetUniform("light.color", color);
 			program->SetUniform("light.position", position);
 		}

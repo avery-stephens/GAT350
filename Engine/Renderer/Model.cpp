@@ -64,7 +64,7 @@ namespace boogleborg
         m_vertexBuffer.CreateVertexBuffer((GLsizei)(sizeof(vertex_t) * vertices.size()), (GLsizei)vertices.size(), vertices.data());
         m_vertexBuffer.SetAttribute(0, 3, sizeof(vertex_t), 0);
         m_vertexBuffer.SetAttribute(1, 2, sizeof(vertex_t), offsetof(vertex_t, texcoord));
-        m_vertexBuffer.SetAttribute(2, 2, sizeof(vertex_t), offsetof(vertex_t, normal));
+        m_vertexBuffer.SetAttribute(2, 3, sizeof(vertex_t), offsetof(vertex_t, normal));
 
         // get model index vertices 
         std::vector<GLuint> indices;
