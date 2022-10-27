@@ -38,6 +38,7 @@ namespace boogleborg
 			LOG("Could not load scene file (%s).", name.c_str());
 			return false;
 		}
+
 		Read(document);
 		Initialize();
 		return true;
