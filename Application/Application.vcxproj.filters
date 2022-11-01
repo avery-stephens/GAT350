@@ -68,5 +68,14 @@
     <None Include="..\Build\Assets\Shaders\basic_phong.vert">
       <Filter>Resource Files\Shaders</Filter>
     </None>
+    <None Include="..\Build\Assets\Scenes\assignment.scn">
+      <Filter>Resource Files\Scenes</Filter>
+    </None>
+    <None Include="..\Build\Assets\Materials\marble.mtrl">
+      <Filter>Resource Files\Materials</Filter>
+    </None>
+    <None Include="..\Build\Assets\Materials\porcelain.mtrl">
+      <Filter>Resource Files\Materials</Filter>
+    </None>
   </ItemGroup>
 </Project>

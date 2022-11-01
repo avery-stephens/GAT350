@@ -1,10 +1,10 @@
 { 
     "program":"shaders/basic_phong.prog", 
-    "texture":"textures/cow.png", 
+    "texture":"textures/marbles.jpg", 
     "color":[ 
         1, 
         1, 
         1 
     ], 
-    "shininess":100 
+    "shininess":100
 } 

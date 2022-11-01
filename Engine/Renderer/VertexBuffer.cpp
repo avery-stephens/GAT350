@@ -45,6 +45,7 @@ namespace boogleborg
 
 	void VertexBuffer::Draw(GLenum primitiveType)
 	{
+		glBindVertexArray(m_vao);
 		if (m_ibo)
 		{
 			glDrawElements(primitiveType, m_indexCount, m_indexType, 0);

@@ -144,7 +144,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Build\Assets\Materials\cow.mtrl" />
+    <None Include="..\Build\Assets\Materials\marble.mtrl" />
+    <None Include="..\Build\Assets\Materials\porcelain.mtrl" />
     <None Include="..\Build\Assets\Materials\sussy.mtrl" />
+    <None Include="..\Build\Assets\Scenes\assignment.scn" />
     <None Include="..\Build\Assets\Scenes\basic.scn" />
     <None Include="..\Build\Assets\Scenes\basic_lit.scn" />
     <None Include="..\Build\Assets\Shaders\basic.frag" />
