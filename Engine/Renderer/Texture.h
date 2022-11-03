@@ -23,6 +23,8 @@ namespace boogleborg
 		bool CreateFromSurface(SDL_Surface* surface, Renderer& renderer);
 
 		bool Load(const std::string& filename, Renderer& renderer);
+
+		void SetActive(GLuint unit) { glActiveTexture(unit); }
 		void Bind() { glBindTexture(m_target, m_texture); }
 
 		Vector2 GetSize() const;
@@ -34,7 +36,5 @@ namespace boogleborg
 
 		GLuint m_texture;
 		GLenum m_target = GL_TEXTURE_2D;
-		GLuint m_unit = GL_TEXTURE0;
-		//SDL_Texture* m_texture = nullptr;
 	};
 }

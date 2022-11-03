@@ -17,7 +17,7 @@ int main(int argc, char** argv)
 	LOG("Window Initialized...");
 
 	//load scene
-	auto scene = boogleborg::g_resources.Get<boogleborg::Scene>("scenes/assignment.scn");
+	auto scene = boogleborg::g_resources.Get<boogleborg::Scene>("scenes/texture.scn");
 
 	bool quit = false;
 	while (!quit)
@@ -26,17 +26,22 @@ int main(int argc, char** argv)
 		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_escape) == boogleborg::InputSystem::KeyState::Pressed) quit = true;
 
 		//model = glm::eulerAngleXYZ(0.0f, boogleborg::g_time.time, 0.0f);
+
+		auto material = boogleborg::g_resources.Get<boogleborg::Material>("Materials/multi.mtrl");
+		if (material)
+		{
+			//material->uv_offset += glm::vec2(boogleborg::g_time.deltaTime);
+		}
+
+		scene->Update();
 		
 		boogleborg::g_renderer.BeginFrame();
 
-		//m->m_vertexBuffer.Draw();
-
-		//auto actor = scene->GetActorFromName("Cow");
-		//if (actor)
-		//{
-		//	//actor->m_transform.rotation.y += 90.0f * boogleborg::g_time.deltaTime;
-		//}
-		scene->Update();
+		auto actor = scene->GetActorFromName("Cow");
+		if (actor)
+		{
+			actor->m_transform.rotation.y += 45.0f * boogleborg::g_time.deltaTime;
+		}
 
 		scene->Draw(boogleborg::g_renderer);
 
