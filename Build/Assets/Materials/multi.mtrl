@@ -1,10 +1,11 @@
 { 
     "program":"shaders/texture_phong.prog",
     "textures": [
-    "textures/metal_diffuse.png",
-    "textures/metal_specular.png"
-  ],
-  "uv_tiling": [0.5, 0.5],
+      "textures/lava.png",
+      "textures/lava_specular.png",
+      "textures/lava_emissive.png"
+    ],
+  "uv_tiling": [1, 1],
   "uv_offset": [0, 0],
     "color":[ 
         1, 

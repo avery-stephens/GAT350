@@ -27,7 +27,7 @@ int main(int argc, char** argv)
 
 		//model = glm::eulerAngleXYZ(0.0f, boogleborg::g_time.time, 0.0f);
 
-		auto material = boogleborg::g_resources.Get<boogleborg::Material>("Materials/multi.mtrl");
+		auto material = boogleborg::g_resources.Get<boogleborg::Material>("Materials/ogre.mtrl");
 		if (material)
 		{
 			//material->uv_offset += glm::vec2(boogleborg::g_time.deltaTime);
@@ -37,7 +37,7 @@ int main(int argc, char** argv)
 		
 		boogleborg::g_renderer.BeginFrame();
 
-		auto actor = scene->GetActorFromName("Cow");
+		auto actor = scene->GetActorFromName("Ogre");
 		if (actor)
 		{
 			actor->m_transform.rotation.y += 45.0f * boogleborg::g_time.deltaTime;

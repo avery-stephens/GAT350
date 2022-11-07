@@ -7,7 +7,7 @@ namespace boogleborg
 	{
 		std::string lower = str;
 		// convert string characters to lower case 
-		std::transform(lower.begin(), lower.end(), lower.begin(), [](unsigned char c) { return std::tolower(c); });
+		std::transform(str.begin(), str.end(), lower.begin(), [](unsigned char c) { return std::tolower(c); });
 		return lower;
 	}
 
@@ -15,7 +15,7 @@ namespace boogleborg
 	{
 		std::string upper = str;
 		// convert string characters to upper case 
-		std::transform(upper.begin(), upper.end(), upper.begin(), [](unsigned char c) { return std::toupper(c); });
+		std::transform(str.begin(), str.end(), upper.begin(), [](unsigned char c) { return std::toupper(c); });
 		return upper;
 	}
 

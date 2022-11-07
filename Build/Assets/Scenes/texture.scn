@@ -2,7 +2,7 @@
   "actors": [
     {
       "type": "Actor",
-      "name": "Cow",
+      "name": "Ogre",
       "transform": {
         "position": [
           0,
@@ -23,8 +23,8 @@
       "components": [
         {
           "type": "ModelComponent",
-          "model_name": "Models/Cube.obj",
-          "material_name": "Materials/multi.mtrl"
+          "model_name": "Models/cube.obj",
+          "material_name": "Materials/ogre.mtrl"
         }
       ]
     },
