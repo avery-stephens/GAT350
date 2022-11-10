@@ -58,7 +58,7 @@ namespace boogleborg
 		//SDL_SetRenderDrawColor(m_renderer, m_clearColor.r, m_clearColor.g, m_clearColor.b, m_clearColor.a);
 		//SDL_RenderClear(m_renderer);
 
-		glClearColor(0.3, 0.7, 0.8, 1);
+		glClearColor(0, 0, 0, 1);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 

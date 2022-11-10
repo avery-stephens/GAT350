@@ -27,20 +27,27 @@ int main(int argc, char** argv)
 
 		//model = glm::eulerAngleXYZ(0.0f, boogleborg::g_time.time, 0.0f);
 
-		auto material = boogleborg::g_resources.Get<boogleborg::Material>("Materials/ogre.mtrl");
-		if (material)
-		{
-			//material->uv_offset += glm::vec2(boogleborg::g_time.deltaTime);
-		}
+		//auto material = boogleborg::g_resources.Get<boogleborg::Material>("Materials/ogre.mtrl");
+		//if (material)
+		//{
+		//	//material->uv_offset += glm::vec2(boogleborg::g_time.deltaTime);
+		//}
 
 		scene->Update();
 		
 		boogleborg::g_renderer.BeginFrame();
 
-		auto actor = scene->GetActorFromName("Ogre");
+		auto actor = scene->GetActorFromName("Unicorn");
 		if (actor)
 		{
 			actor->m_transform.rotation.y += 45.0f * boogleborg::g_time.deltaTime;
+		}
+
+		actor = scene->GetActorFromName("Light");
+		if (actor)
+		{
+			// move light using sin wave 
+			actor->m_transform.position.x = std::sin(boogleborg::g_time.time);
 		}
 
 		scene->Draw(boogleborg::g_renderer);

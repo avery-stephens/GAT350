@@ -1,5 +1,5 @@
 { 
-    "program":"shaders/normal_phong.prog",
+    "program":"shaders/lit/texture.prog",
     "textures": [
       "textures/ogre_diffuse.bmp",
       "textures/ogre_normal.bmp"
@@ -9,5 +9,5 @@
         1, 
         1 
     ], 
-    "shininess":256
+    "shininess":128
 } 

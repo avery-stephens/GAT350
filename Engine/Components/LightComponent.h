@@ -6,8 +6,15 @@ namespace boogleborg
 	class LightComponent : public Component
 	{
 	public:
-		CLASS_DECLARATION(LightComponent)
+		enum class Type
+		{
+			Point,
+			Directional,
+			Spot
+		};
 
+	public:
+		CLASS_DECLARATION(LightComponent)
 		void Update() override;
 
 		virtual bool Write(const rapidjson::Value& value) const override;
@@ -15,5 +22,8 @@ namespace boogleborg
 
 	public:
 		glm::vec3 color{ 0 };
+		Type type = Type::Point;
+		float cutoff = 45.0f;
+		float exponent = 50.0f;
 	};
 }

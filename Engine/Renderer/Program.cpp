@@ -118,7 +118,7 @@ namespace boogleborg
     void Program::SetUniform(const std::string& name, unsigned int value)
     {
         GLint uniform = GetUniform(name);
-        if (uniform != -1) glUniform1i(uniform, value);
+        glUniform1ui(uniform, value);
     }
 
     void Program::SetUniform(const std::string& name, bool value)

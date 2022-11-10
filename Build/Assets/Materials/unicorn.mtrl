@@ -1,0 +1,10 @@
+{ 
+    "program":"shaders/lit/texture_normal.prog",
+    "textures": [ "textures/unicorn_diffuse.png", "textures/unicorn_normal.png" ],
+    "color":[ 
+        1, 
+        1, 
+        1 
+    ], 
+    "shininess":256
+} 

@@ -1,5 +1,5 @@
 { 
-    "program":"shaders/basic_phong.prog", 
+    "program":"shaders/texture_phong.prog", 
     "texture":"textures/cow.png", 
     "color":[ 
         1, 
