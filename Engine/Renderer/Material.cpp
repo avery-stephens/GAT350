@@ -21,6 +21,16 @@ namespace boogleborg
 		// get program resource 
 		m_program = boogleborg::g_resources.Get<boogleborg::Program>(program);
 
+		// read cube map
+		std::string cubemap;
+		READ_DATA(document, cubemap);
+		if (!cubemap.empty())
+		{
+			std::string cubemap_extension;
+			READ_DATA(document, cubemap_extension);
+			m_textures.push_back(boogleborg::g_resources.Get<boogleborg::CubemapTexture>(cubemap, cubemap_extension));
+		}
+
 		// read the texture name 
 		std::string texture;
 		READ_DATA(document, texture);

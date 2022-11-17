@@ -22,16 +22,20 @@ namespace boogleborg
 		bool Create(std::string filename, ...) override;
 		bool CreateFromSurface(SDL_Surface* surface, Renderer& renderer);
 
-		bool Load(const std::string& filename, Renderer& renderer);
+		bool Load(const std::string& filename);
+
+		void SetActive(GLuint unit) { glActiveTexture(unit); }
 		void Bind() { glBindTexture(m_target, m_texture); }
 
 		Vector2 GetSize() const;
+		static GLenum GetInternalFormat(GLuint format);
 
 		friend class Renderer;
 
-	private:
+	protected:
 		void FlipSurface(SDL_Surface* surface);
 
+	protected:
 		GLuint m_texture;
 		GLenum m_target = GL_TEXTURE_2D;
 		GLuint m_unit = GL_TEXTURE0;

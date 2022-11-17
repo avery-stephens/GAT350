@@ -22,7 +22,9 @@ namespace boogleborg
 
 		void Initialize() override;
 		void Update() override;
-		void Draw(Renderer& renderer);
+		virtual bool Create(std::string name, ...) override;
+		void PreRender(Renderer& renderer);
+		void Render(Renderer& renderer);
 
 		virtual bool Write(const rapidjson::Value& value) const override;
 		virtual bool Read(const rapidjson::Value& value) override;

@@ -100,48 +100,52 @@ int main(int argc, char** argv)
 		transforms.push_back({ {0, 0, 0}, {0, 0, 0} });
 	}
 
-	/*boogleborg::Transform transforms[] =
-	{
-		{ {boogleborg::randomf(-10, 10), boogleborg::randomf(-15, 10), boogleborg::randomf(-10, 15)}, {0, boogleborg::randomf(360), 0} },
-		{ {2, 0, 0}, {0, 90, 90} },
-		{ {0, 2, -2}, {45, 90, 0} },
-		{ {2, -1, 0}, {90, 90, 0} }
-	};*/
+	//load scene
+	auto scene = boogleborg::g_resources.Get<boogleborg::Scene>("scenes/cubeMap.scn");
 
+	glm::vec3 rot(0, 0, 0);
+	float x = 0;
+	float ri = 1;
 	bool quit = false;
 	while (!quit)
 	{
 		boogleborg::Engine::Instance().Update();
 		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_escape) == boogleborg::InputSystem::KeyState::Pressed) quit = true;
 
-		//add input to move camera
-		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_left) == boogleborg::InputSystem::KeyState::Held) cameraPosition.x -= speed * boogleborg::g_time.deltaTime;
-		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_right) == boogleborg::InputSystem::KeyState::Held) cameraPosition.x += speed * boogleborg::g_time.deltaTime;
-		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_up) == boogleborg::InputSystem::KeyState::Held) cameraPosition.y += speed * boogleborg::g_time.deltaTime;
-		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_down) == boogleborg::InputSystem::KeyState::Held) cameraPosition.y -= speed * boogleborg::g_time.deltaTime;
-		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_pgup) == boogleborg::InputSystem::KeyState::Held) cameraPosition.z -= speed * boogleborg::g_time.deltaTime;
-		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_pgdown) == boogleborg::InputSystem::KeyState::Held) cameraPosition.z += speed * boogleborg::g_time.deltaTime;
-		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_enter) == boogleborg::InputSystem::KeyState::Held) cameraPosition = glm::vec3{ 0, 0, 3 };
+		//model = glm::eulerAngleXYZ(0.0f, boogleborg::g_time.time, 0.0f);
+		auto actor = scene->GetActorFromName("Unicorn");
+		if (actor)
+		{
+			actor->m_transform.rotation = math::EulerToQuaternion(rot);
+		}
 
-		glm::mat4 view = glm::lookAt(cameraPosition, cameraPosition + glm::vec3{ 0, 0, -1 }, glm::vec3{ 0, 1, 0 });
+		actor = scene->GetActorFromName("Light");
+		if (actor)
+		{
+			// move light using sin wave 
+			//actor->m_transform.position = pos;
+		}
 
+		auto program = boogleborg::g_resources.Get <boogleborg::Program>("shaders/fx/refraction.prog");
+		if (program)
+		{
+			program->Use();
+			program->SetUniform("ri", ri);
+		}
+
+		ImGui::Begin("Transform");
+		ImGui::DragFloat3("Rotation", &rot[0]);
+		ImGui::DragFloat("Refraction Index", &ri, 0.01, 1, 2);
+		ImGui::End();
 		scene->Update();
 		//model = glm::eulerAngleXYZ(0.0f, boogleborg::g_time.time, 0.0f);
 		
 		boogleborg::g_renderer.BeginFrame();
 
-		//m->m_vertexBuffer.Draw();
+		scene->PreRender(boogleborg::g_renderer);
+		scene->Render(boogleborg::g_renderer);
 
-		for (size_t i = 0; i < transforms.size(); i++)
-		{
-			transforms[i].rotation += glm::vec3{ 0, boogleborg::g_time.deltaTime, 0 };
-			glm::mat4 mvp = projection * view * (glm::mat4)transforms[i];
-			material->GetProgram()->SetUniform("mvp", mvp);
-
-			//vb->Draw();
-		}
-
-		scene->Draw(boogleborg::g_renderer);
+		boogleborg::g_gui.Draw();
 
 		boogleborg::g_renderer.EndFrame();
 	}
