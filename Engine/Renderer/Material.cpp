@@ -22,6 +22,15 @@ namespace boogleborg
 		m_program = boogleborg::g_resources.Get<boogleborg::Program>(program);
 
 		// read the texture name 
+		std::string cubemap;
+		READ_DATA(document, cubemap);
+		if (!cubemap.empty())
+		{
+			std::string cubemap_extension;
+			READ_DATA(document, cubemap_extension);
+			m_textures.push_back(boogleborg::g_resources.Get<boogleborg::CubemapTexture>(cubemap, cubemap_extension));
+		}
+
 		std::vector<std::string> textures;
 		READ_DATA(document, textures);
 		for(auto texture : textures)

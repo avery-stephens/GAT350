@@ -14,6 +14,13 @@ namespace boogleborg
 		m_projection = glm::perspective(glm::radians(fov), aspectRatio, near, far);
 	}
 
+	void CameraComponent::SetProgram(std::shared_ptr<Program> programs)
+	{
+		programs->Use();
+		programs->SetUniform("view", m_view);
+		programs->SetUniform("projection", m_projection);
+	}
+
 	bool CameraComponent::Write(const rapidjson::Value& value) const
 	{
 		return true;

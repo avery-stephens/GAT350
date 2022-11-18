@@ -6,15 +6,17 @@
 
 namespace boogleborg
 {
+
 	void ModelComponent::Draw(Renderer& renderer)
 	{
-		material->Bind();
+		m_material->Bind();
 		// set model view projection matrix for model 
-		material->GetProgram() -> SetUniform("model", (glm::mat4)m_owner->m_transform);
-		material->GetProgram() -> SetUniform("view", renderer.GetView());
-		material->GetProgram() -> SetUniform("projection", renderer.GetProjection());
+		m_material->GetProgram() -> SetUniform("model", (glm::mat4)m_owner->m_transform);
+		//material->GetProgram() -> SetUniform("view", renderer.GetView());
+		//material->GetProgram() -> SetUniform("projection", renderer.GetProjection());
 
-		model->m_vertexBuffer.Draw();
+		glDepthMask(depth_test);
+		m_model->m_vertexBuffer.Draw();
 	}
 
 	bool ModelComponent::Write(const rapidjson::Value& value) const
@@ -24,17 +26,16 @@ namespace boogleborg
 
 	bool ModelComponent::Read(const rapidjson::Value& value)
 	{
-		// read model name 
 		std::string model_name;
 		READ_DATA(value, model_name);
-		// get model from model name 
-		model = g_resources.Get<boogleborg::Model>(model_name);
 
-		// read material name 
 		std::string material_name;
 		READ_DATA(value, material_name);
-		// get material from material name 
-		material = g_resources.Get<boogleborg::Material>(material_name);
+
+		m_model = g_resources.Get<Model>(model_name);
+		m_material = g_resources.Get<Material>(material_name);
+
+		READ_DATA(value, depth_test);
 
 		return true;
 	}

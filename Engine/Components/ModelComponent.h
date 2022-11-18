@@ -19,7 +19,8 @@ namespace boogleborg
 		virtual bool Read(const rapidjson::Value& value) override;
 
 	public:
-		std::shared_ptr<Model> model;
-		std::shared_ptr<Material> material;
+		std::shared_ptr<Model> m_model;
+		std::shared_ptr<Material> m_material;
+		bool depth_test = true;
 	};
 }

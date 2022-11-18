@@ -53,6 +53,10 @@ namespace boogleborg
 		friend class Texture;
 		friend class GUI;
 
+	public:
+		glm::vec3 clear_color{ 0, 0, 0 };
+		glm::vec3 ambient_color{ 0, 0, 0 };
+
 	private:
 		int m_width = 0;
 		int m_height = 0;

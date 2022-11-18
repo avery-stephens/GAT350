@@ -15,20 +15,17 @@ namespace boogleborg
 
     bool Texture::Create(std::string filename, ...)
     {
-        // va_list - type to hold information about variable arguments
+        // va_list - type to hold information about variable arguments 
         va_list args;
 
-        // va_start - enables access to variadic function arguments
+        // va_start - enables access to variadic function arguments 
         va_start(args, filename);
 
-        // va_arg - accesses the next variadic function arguments
-        Renderer& renderer = va_arg(args, Renderer);
-
-        // va_end - ends traversal of the variadic function arguments
+        // va_end - ends traversal of the variadic function arguments 
         va_end(args);
 
-        // create texture (returns true/false if successful)
-        return Load(filename, renderer);
+        // create texture (returns true/false if successful) 
+        return Load(filename);
     }
 
     bool Texture::CreateFromSurface(SDL_Surface* surface, Renderer& renderer)
@@ -36,7 +33,7 @@ namespace boogleborg
         return true;
     }
 
-    bool Texture::Load(const std::string& filename, Renderer& renderer)
+    bool Texture::Load(const std::string& filename)
     {
         // load surface
         // !! call IMG_Load with c-string of filename
@@ -53,19 +50,51 @@ namespace boogleborg
         glGenTextures(1, &m_texture);
         glBindTexture(m_target, m_texture);
 
-        GLenum format = (surface->format->BytesPerPixel == 4) ? GL_RGBA : GL_RGB;
-        glTexImage2D(m_target, 0, format, surface->w, surface->h, 0, format, GL_UNSIGNED_BYTE, surface->pixels);
+        LOG("%s : width = %d | height = %d | pixel format = %s", filename.c_str(), surface->w, surface->h, SDL_GetPixelFormatName(surface->format->format));
+
+        GLenum internalFormat = GetInternalFormat(surface->format->format);
+        GLint format = (surface->format->BytesPerPixel == 4) ? GL_RGBA : GL_RGB;
+
+        glTexImage2D(m_target, 0, format, surface->w, surface->h, 0, internalFormat, GL_UNSIGNED_BYTE, surface->pixels);
+
+        /*GLenum format = (surface->format -> BytesPerPixel == 4) ? GL_RGBA : GL_RGB;
+        glTexImage2D(m_target, 0, format, surface->w, surface -> h, 0, format, GL_UNSIGNED_BYTE, surface->pixels);*/
 
         glTexParameteri(m_target, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(m_target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(m_target, GL_TEXTURE_WRAP_S, GL_REPEAT);
         glTexParameteri(m_target, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
-        // !! call SDL_FreeSurface with surface as the parameter
-        // !! no need to keep surface after texture is created
+        // !! call SDL_FreeSurface with surface as the parameter 
+        // !! no need to keep surface after texture is created 
         SDL_FreeSurface(surface);
 
-        return true;
+    }
+
+    GLenum Texture::GetInternalFormat(GLuint format)
+    {
+        GLenum internalFormat = SDL_PIXELFORMAT_UNKNOWN;
+        switch (format)
+        {
+        case SDL_PIXELFORMAT_RGB888:
+        case SDL_PIXELFORMAT_RGB24:
+            internalFormat = GL_RGB;
+            break;
+        case SDL_PIXELFORMAT_BGR888:
+        case SDL_PIXELFORMAT_BGR24:
+            internalFormat = GL_BGR;
+            break;
+        case SDL_PIXELFORMAT_RGBA8888:
+        case SDL_PIXELFORMAT_RGBA32:
+            internalFormat = GL_RGBA;
+            break;
+        case SDL_PIXELFORMAT_BGRA8888:
+        case SDL_PIXELFORMAT_BGRA32:
+            internalFormat = GL_BGRA;
+            break;
+        }
+
+        return internalFormat;
     }
 
     boogleborg::Vector2 Texture::GetSize() const
