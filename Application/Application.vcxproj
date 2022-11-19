@@ -148,6 +148,7 @@
     <None Include="..\Build\Assets\Materials\multi.mtrl" />
     <None Include="..\Build\Assets\Materials\porcelain.mtrl" />
     <None Include="..\Build\Assets\Materials\reflection.mtrl" />
+    <None Include="..\Build\Assets\Materials\reflection_refraction.mtrl" />
     <None Include="..\Build\Assets\Materials\refraction.mtrl" />
     <None Include="..\Build\Assets\Materials\skybox.mtrl" />
     <None Include="..\Build\Assets\Materials\sussy.mtrl" />
@@ -169,6 +170,9 @@
     <None Include="..\Build\Assets\Shaders\FX\reflection.frag" />
     <None Include="..\Build\Assets\Shaders\FX\reflection.prog" />
     <None Include="..\Build\Assets\Shaders\FX\reflection.vert" />
+    <None Include="..\Build\Assets\Shaders\FX\reflection_refraction.frag" />
+    <None Include="..\Build\Assets\Shaders\FX\reflection_refraction.prog" />
+    <None Include="..\Build\Assets\Shaders\FX\reflection_refraction.vert" />
     <None Include="..\Build\Assets\Shaders\FX\refraction.frag" />
     <None Include="..\Build\Assets\Shaders\FX\refraction.prog" />
     <None Include="..\Build\Assets\Shaders\FX\refraction.vert" />

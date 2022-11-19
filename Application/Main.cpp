@@ -21,8 +21,10 @@ int main(int argc, char** argv)
 	auto scene = boogleborg::g_resources.Get<boogleborg::Scene>("scenes/cubeMap.scn");
 
 	glm::vec3 rot = { 0, 0, 0 };
-	float ri = 1;
-	float x = 0;
+	float interP = 1;
+	float refractionInd = 1;
+	//float ri = 1;
+	//float x = 0;
 	bool quit = false;
 	while (!quit)
 	{
@@ -44,19 +46,22 @@ int main(int argc, char** argv)
 			//actor->m_transform.position = pos;
 		}
 
-		auto program = boogleborg::g_resources.Get<boogleborg::Program>("shaders/fx/refraction.prog");
+		auto program = boogleborg::g_resources.Get<boogleborg::Program>("shaders/fx/reflection_refraction.prog");
 		if (program)
 		{
 			program->Use();
-			program->SetUniform("ri", ri);
+			program->SetUniform("i", interP);
+			program->SetUniform("ri", refractionInd);
 		}
 
 
 		ImGui::Begin("Yoyo");
 		//ImGui::Button("Click Button");
 		ImGui::DragFloat3("Rotation", &rot[0]); //x,y,z sliders
-		ImGui::DragFloat("Refraction Index", &ri, 0.01f, 1, 3); //x,y,z sliders
+		ImGui::DragFloat("Interpolation", &interP, 0.05f, 0, 1); //x,y,z sliders
+		ImGui::DragFloat("Refraction Index", &refractionInd, 0.05f, 1, 4.1f); //x,y,z sliders		
 		ImGui::End();
+
 		scene->Update();
 		
 		boogleborg::g_renderer.BeginFrame();
