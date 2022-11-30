@@ -1,6 +1,6 @@
 #include "Engine.h" 
 #include <iostream> 
-
+#define POST_PROCESS
 
 int main(int argc, char** argv)
 {
@@ -17,8 +17,17 @@ int main(int argc, char** argv)
 	LOG("Window Initialized...");
 	boogleborg::g_gui.Initialize(boogleborg::g_renderer);
 
+	//create framebuffer texture
+	auto texture = std::make_shared<boogleborg::Texture>();
+	texture->CreateTexture(1024, 1024);
+	boogleborg::g_resources.Add<boogleborg::Texture>("fb_texture", texture);
+
+	//create framebuffer
+	auto framebuffer = boogleborg::g_resources.Get<boogleborg::FrameBuffer>("framebuffer", "fb_texture");
+	framebuffer->Unbind();
+
 	//load scene
-	auto scene = boogleborg::g_resources.Get<boogleborg::Scene>("scenes/cubeMap.scn");
+	auto scene = boogleborg::g_resources.Get<boogleborg::Scene>("scenes/postProcess.scn");
 
 	glm::vec3 rot = { 0, 0, 0 };
 	float interP = 1;
@@ -46,12 +55,11 @@ int main(int argc, char** argv)
 			//actor->m_transform.position = pos;
 		}
 
-		auto program = boogleborg::g_resources.Get<boogleborg::Program>("shaders/fx/reflection_refraction.prog");
+		auto program = boogleborg::g_resources.Get<boogleborg::Program>("shaders/POST_PROCESS/postproces.prog");
 		if (program)
 		{
 			program->Use();
-			program->SetUniform("i", interP);
-			program->SetUniform("ri", refractionInd);
+			program->SetUniform("offset", boogleborg::g_time.time);
 		}
 
 
@@ -63,13 +71,43 @@ int main(int argc, char** argv)
 		ImGui::End();
 
 		scene->Update();
-		
-		boogleborg::g_renderer.BeginFrame();
 
+#ifdef POST_PROCESS
+		{
+			auto actor = scene->GetActorFromName("PostProcess");
+			if (actor)
+			{
+				actor->SetActive(false);
+			}
+		}
+		
+		//render pass 1
+		boogleborg::g_renderer.SetViewport(0, 0, framebuffer->GetSize().x, framebuffer->GetSize().y);
+		framebuffer->Bind();
+		boogleborg::g_renderer.BeginFrame();
 		scene->PreRender(boogleborg::g_renderer);
 		scene->Render(boogleborg::g_renderer);
+		framebuffer->Unbind();
 
-		//scene->Draw(boogleborg::g_renderer);
+		boogleborg::g_renderer.RestoreViewport();
+		boogleborg::g_renderer.BeginFrame();
+		scene->PreRender(boogleborg::g_renderer);
+
+		// draw only the post process actor to the screen 
+		{
+			auto actor = scene->GetActorFromName("PostProcess");
+			if (actor)
+			{
+				actor->SetActive(true);
+				actor->Draw(boogleborg::g_renderer);
+			}
+		}
+#else 
+		boogleborg::g_renderer.BeginFrame();
+		scene->PreRender(boogleborg::g_renderer);
+		scene->Render(boogleborg::g_renderer);
+#endif // POST_PROCESS
+
 		boogleborg::g_gui.Draw();
 
 		boogleborg::g_renderer.EndFrame();

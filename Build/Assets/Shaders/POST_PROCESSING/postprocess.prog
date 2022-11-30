@@ -1,0 +1,4 @@
+{
+	"vertex_shader": "shaders/POST_PROCESSING/postprocess.vert",
+	"fragment_shader": "shaders/POST_PROCESSING/postprocess.frag"
+}

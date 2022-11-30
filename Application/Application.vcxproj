@@ -147,9 +147,11 @@
     <None Include="..\Build\Assets\Materials\ogre.mtrl" />
     <None Include="..\Build\Assets\Materials\multi.mtrl" />
     <None Include="..\Build\Assets\Materials\porcelain.mtrl" />
+    <None Include="..\Build\Assets\Materials\postProcess.mtrl" />
     <None Include="..\Build\Assets\Materials\reflection.mtrl" />
     <None Include="..\Build\Assets\Materials\reflection_refraction.mtrl" />
     <None Include="..\Build\Assets\Materials\refraction.mtrl" />
+    <None Include="..\Build\Assets\Materials\RTT.mtrl" />
     <None Include="..\Build\Assets\Materials\skybox.mtrl" />
     <None Include="..\Build\Assets\Materials\sussy.mtrl" />
     <None Include="..\Build\Assets\Materials\unicorn.mtrl" />
@@ -157,6 +159,8 @@
     <None Include="..\Build\Assets\Scenes\basic.scn" />
     <None Include="..\Build\Assets\Scenes\basic_lit.scn" />
     <None Include="..\Build\Assets\Scenes\cubeMap.scn" />
+    <None Include="..\Build\Assets\Scenes\postProcess.scn" />
+    <None Include="..\Build\Assets\Scenes\rtt.scn" />
     <None Include="..\Build\Assets\Scenes\texture.scn" />
     <None Include="..\Build\Assets\Shaders\basic.frag" />
     <None Include="..\Build\Assets\Shaders\basic.prog" />
@@ -188,6 +192,9 @@
     <None Include="..\Build\Assets\Shaders\LIT\texture_normal.frag" />
     <None Include="..\Build\Assets\Shaders\LIT\texture_normal.prog" />
     <None Include="..\Build\Assets\Shaders\LIT\texture_normal.vert" />
+    <None Include="..\Build\Assets\Shaders\POST_PROCESSING\postprocess.frag" />
+    <None Include="..\Build\Assets\Shaders\POST_PROCESSING\postprocess.prog" />
+    <None Include="..\Build\Assets\Shaders\POST_PROCESSING\postprocess.vert" />
     <None Include="..\Build\Assets\Shaders\UNLIT\color.frag" />
     <None Include="..\Build\Assets\Shaders\UNLIT\color.prog" />
     <None Include="..\Build\Assets\Shaders\UNLIT\color.vert" />
