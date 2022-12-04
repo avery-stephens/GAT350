@@ -31,7 +31,7 @@
     <Filter Include="Resource Files\Shaders\UNLIT">
       <UniqueIdentifier>{53fba9c3-a481-48fd-8c5a-f7e7d4bed3e1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\Shaders\POST_PROCESS">
+    <Filter Include="Resource Files\Shaders\POST_PROCESSING">
       <UniqueIdentifier>{b80979fe-f0f5-46b9-98ba-f569bd790405}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -201,13 +201,13 @@
       <Filter>Resource Files\Materials</Filter>
     </None>
     <None Include="..\Build\Assets\Shaders\POST_PROCESSING\postprocess.frag">
-      <Filter>Resource Files\Shaders\POST_PROCESS</Filter>
+      <Filter>Resource Files\Shaders\POST_PROCESSING</Filter>
     </None>
     <None Include="..\Build\Assets\Shaders\POST_PROCESSING\postprocess.prog">
-      <Filter>Resource Files\Shaders\POST_PROCESS</Filter>
+      <Filter>Resource Files\Shaders\POST_PROCESSING</Filter>
     </None>
     <None Include="..\Build\Assets\Shaders\POST_PROCESSING\postprocess.vert">
-      <Filter>Resource Files\Shaders\POST_PROCESS</Filter>
+      <Filter>Resource Files\Shaders\POST_PROCESSING</Filter>
     </None>
     <None Include="..\Build\Assets\Materials\postProcess.mtrl">
       <Filter>Resource Files\Materials</Filter>

@@ -19,12 +19,21 @@ int main(int argc, char** argv)
 
 	//create framebuffer texture
 	auto texture = std::make_shared<boogleborg::Texture>();
-	texture->CreateTexture(1024, 1024);
+	texture->CreateTexture(1024, 1024); //512
 	boogleborg::g_resources.Add<boogleborg::Texture>("fb_texture", texture);
 
 	//create framebuffer
 	auto framebuffer = boogleborg::g_resources.Get<boogleborg::FrameBuffer>("framebuffer", "fb_texture");
 	framebuffer->Unbind();
+
+	// render pass 1 (render to framebuffer) 
+	boogleborg::g_renderer.SetViewport(0, 0, framebuffer->GetSize().x, framebuffer->GetSize().y);
+	framebuffer->Bind();
+	boogleborg::g_renderer.BeginFrame();
+
+	// render pass 2 (render to screen) 
+	boogleborg::g_renderer.RestoreViewport();
+	boogleborg::g_renderer.BeginFrame();
 
 	//load scene
 	auto scene = boogleborg::g_resources.Get<boogleborg::Scene>("scenes/postProcess.scn");
@@ -55,7 +64,7 @@ int main(int argc, char** argv)
 			//actor->m_transform.position = pos;
 		}
 
-		auto program = boogleborg::g_resources.Get<boogleborg::Program>("shaders/POST_PROCESS/postproces.prog");
+		auto program = boogleborg::g_resources.Get<boogleborg::Program>("shaders/POST_PROCESSING/postprocess.prog");
 		if (program)
 		{
 			program->Use();

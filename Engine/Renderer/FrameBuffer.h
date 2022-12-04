@@ -19,7 +19,7 @@ namespace boogleborg
 		void Bind();
 		void Unbind();
 
-	public:
+	private:
 		int m_width = 0;
 		int m_height = 0;
 	protected:

@@ -73,9 +73,9 @@ namespace boogleborg
 			int index = 0;
 			for (auto light : lights)
 			{
-				light->SetProgram(program, index++);
+				light->SetProgram(program, index++); // this function changed the current program
 			}
-
+			// program is not set, set to what was done in light->SetPRogram
 			program->SetUniform("light_count", index);
 			program->SetUniform("ambient_color", g_renderer.ambient_color);
 		}

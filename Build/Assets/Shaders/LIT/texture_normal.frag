@@ -75,14 +75,14 @@ void phong(vec3 position, vec3 normal, out vec3 ambient, out vec3 diffuse, out v
 void main()
 {
 	vec2 ttexcoord = (texcoord * material.uv_tiling) + material.uv_offset;
+	vec3 ambient;
+	vec3 diffuse;
+	vec3 specular;
 
 	vec3 normal = texture(normalMap, ttexcoord).rgb;
 	normal = (normal * 2) - 1;
 	normal = normalize(tbn * normal);
 
-	vec3 ambient;
-	vec3 diffuse;
-	vec3 specular;
 
 	phong(position, normal, ambient, diffuse, specular);
 

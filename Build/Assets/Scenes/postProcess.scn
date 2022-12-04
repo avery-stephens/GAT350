@@ -16,6 +16,34 @@
     },
     {
       "type": "Actor",
+      "name": "Unicorn",
+      "transform": {
+        "position": [
+          0,
+          -1,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/icecreamunicorn.glb",
+          "material_name": "Materials/unicorn.mtrl"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
       "name": "PostProcess",
       "transform": {
         "position": [
@@ -39,39 +67,11 @@
     },
     {
       "type": "Actor",
-      "name": "Unicorn",
-      "transform": {
-        "position": [
-          0,
-          -1,
-          0
-        ],
-        "scale": [
-          1,
-          1,
-          1
-        ],
-        "rotation": [
-          0,
-          0,
-          0
-        ]
-      },
-      "components": [
-        {
-          "type": "ModelComponent",
-          "model_name": "Models/icecreamunicorn.glb",
-          "material_name": "Materials/reflection.mtrl"
-        }
-      ]
-    },
-    {
-      "type": "Actor",
       "name": "Light",
       "transform": {
         "position": [
-          0,
-          4,
+          2,
+          2,
           2
         ],
         "rotation": [
@@ -99,9 +99,9 @@
       "name": "Light2",
       "transform": {
         "position": [
-          -2,
-          5,
-          2
+          -3,
+          4,
+          1
         ],
         "rotation": [
           0,
@@ -115,6 +115,35 @@
           "color": [
             0,
             1.0,
+            1.0
+          ],
+          "type_name": "point",
+          "cutoff": 40.0,
+          "exponent": 10.0
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Light2",
+      "transform": {
+        "position": [
+          0,
+          1,
+          2
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "LightComponent",
+          "color": [
+            1.0,
+            0,
             1.0
           ],
           "type_name": "point",

@@ -49,22 +49,13 @@ namespace boogleborg
 		// create array light name from index (lights[0], ...) 
 		std::string lightName = "lights[" + std::to_string(index) + "]";
 
-
-		// get all programs in the resource system
-		auto programs = g_resources.Get<Program>();
-		// set programs light properties
-		for (auto& program : programs)
-		{
-			program->Use();
-
-			program->SetUniform(lightName + ".type", (int)type);
-			program->SetUniform(lightName + ".color", color);
-			program->SetUniform(lightName + ".position", position);
-			program->SetUniform(lightName + ".direction", direction);
-			program->SetUniform(lightName + ".cutoff", glm::radians(cutoff));
-			program->SetUniform(lightName + ".exponent", exponent);
-		}
+		// set program
+		program->Use();
+		program->SetUniform(lightName + ".type", (int)type);
+		program->SetUniform(lightName + ".color", color);
+		program->SetUniform(lightName + ".position", position);
+		program->SetUniform(lightName + ".direction", direction);
+		program->SetUniform(lightName + ".cutoff", glm::radians(cutoff));
+		program->SetUniform(lightName + ".exponent", exponent);
 	}
-
-
 }
