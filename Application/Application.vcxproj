@@ -143,6 +143,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Build\Assets\Materials\car.mtrl" />
     <None Include="..\Build\Assets\Materials\cow.mtrl" />
     <None Include="..\Build\Assets\Materials\ogre.mtrl" />
     <None Include="..\Build\Assets\Materials\multi.mtrl" />
@@ -155,10 +156,12 @@
     <None Include="..\Build\Assets\Materials\skybox.mtrl" />
     <None Include="..\Build\Assets\Materials\sussy.mtrl" />
     <None Include="..\Build\Assets\Materials\unicorn.mtrl" />
+    <None Include="..\Build\Assets\Materials\vulture.mtrl" />
     <None Include="..\Build\Assets\Scenes\assignment.scn" />
     <None Include="..\Build\Assets\Scenes\basic.scn" />
     <None Include="..\Build\Assets\Scenes\basic_lit.scn" />
     <None Include="..\Build\Assets\Scenes\cubeMap.scn" />
+    <None Include="..\Build\Assets\Scenes\final.scn" />
     <None Include="..\Build\Assets\Scenes\postProcess.scn" />
     <None Include="..\Build\Assets\Scenes\rtt.scn" />
     <None Include="..\Build\Assets\Scenes\texture.scn" />

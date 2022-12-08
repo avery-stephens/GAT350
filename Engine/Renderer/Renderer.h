@@ -59,8 +59,8 @@ namespace boogleborg
 		glm::vec3 clear_color{ 0, 0, 0 };
 		glm::vec3 ambient_color{ 0, 0, 0 };
 
-		int width = 800;
-		int height = 800;
+		int width = 1000;
+		int height = 900;
 		bool fullscreen = false;
 
 	private:

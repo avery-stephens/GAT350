@@ -1,0 +1,10 @@
+{ 
+    "program":"shaders/lit/texture.prog",
+    "textures": [ "textures/car_diffuse.png", "textures/car_normal.png" ],
+    "color":[ 
+        1, 
+        1, 
+        1 
+    ], 
+    "shininess":256
+} 

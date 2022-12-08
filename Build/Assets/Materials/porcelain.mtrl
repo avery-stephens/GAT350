@@ -1,10 +1,10 @@
 { 
-    "program":"shaders/basic_phong.prog", 
-    "texture":"textures/porcelain.jpg", 
+    "program":"shaders/lit/texture.prog",
+    "textures": [ "textures/stones.jpg" ], 
     "color":[ 
         1, 
-        2, 
-        0.5 
+        1, 
+        1 
     ], 
-    "shininess":100 
+    "shininess":16
 } 

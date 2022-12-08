@@ -20,9 +20,8 @@ void main()
 	fcolor = texture(textureMap, texcoord); 
 
 	//	// black and white effect
-	//	float avg = (color.r + color.g + color.b) / 3.0; 
-	//	fcolor = vec4(vec3(avg), 1); 
-	//
+	//float avg = (color.r + color.g + color.b) / 3.0; 
+	//fcolor = vec4(vec3(avg), 1); 
 	
 	//invert effect 	
 	//fcolor = vec4(1.0 - color, 1);

@@ -1,6 +1,6 @@
 { 
     "program":"shaders/fx/refraction.prog",
-    "cubemap": "textures/SanFrancisco2/",
+    "cubemap": "textures/Yokohama3/",
     "cubemap_extension": ".jpg",
     "color":[ 
         1, 

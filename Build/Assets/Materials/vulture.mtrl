@@ -1,0 +1,10 @@
+{ 
+    "program":"shaders/lit/texture.prog",
+    "textures": [ "textures/vulture_diffuse.png", "textures/vulture_normal.png" ],
+    "color":[ 
+        1, 
+        1, 
+        1 
+    ], 
+    "shininess":256
+} 

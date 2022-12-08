@@ -13,7 +13,7 @@ int main(int argc, char** argv)
 
 	LOG("Engine Initialized...");
 
-	boogleborg::g_renderer.CreateWindow("This thing makes 3d shapes!?!?!??!!?!", 800, 800);
+	boogleborg::g_renderer.CreateWindow("This thing makes 3d shapes!?!?!??!!?!", 1000, 900);
 	LOG("Window Initialized...");
 	boogleborg::g_gui.Initialize(boogleborg::g_renderer);
 
@@ -36,7 +36,7 @@ int main(int argc, char** argv)
 	boogleborg::g_renderer.BeginFrame();
 
 	//load scene
-	auto scene = boogleborg::g_resources.Get<boogleborg::Scene>("scenes/postProcess.scn");
+	auto scene = boogleborg::g_resources.Get<boogleborg::Scene>("scenes/final.scn");
 
 	glm::vec3 rot = { 0, 0, 0 };
 	float interP = 1;
@@ -51,10 +51,10 @@ int main(int argc, char** argv)
 		if (boogleborg::g_inputSystem.GetKeyState(boogleborg::key_escape) == boogleborg::InputSystem::KeyState::Pressed) quit = true;
 
 		//model = glm::eulerAngleXYZ(0.0f, boogleborg::g_time.time, 0.0f);
-		auto actor = scene->GetActorFromName("Unicorn");
+		auto actor = scene->GetActorFromName("Light3");
 		if (actor)
 		{
-			actor->m_transform.rotation = math::EulerToQuaternion(rot);
+			//actor->m_transform.rotation = math::EulerToQuaternion(rot);
 		}
 
 		actor = scene->GetActorFromName("Light");

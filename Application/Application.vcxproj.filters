@@ -215,5 +215,14 @@
     <None Include="..\Build\Assets\Scenes\postProcess.scn">
       <Filter>Resource Files\Scenes</Filter>
     </None>
+    <None Include="..\Build\Assets\Scenes\final.scn">
+      <Filter>Resource Files\Scenes</Filter>
+    </None>
+    <None Include="..\Build\Assets\Materials\vulture.mtrl">
+      <Filter>Resource Files\Materials</Filter>
+    </None>
+    <None Include="..\Build\Assets\Materials\car.mtrl">
+      <Filter>Resource Files\Materials</Filter>
+    </None>
   </ItemGroup>
 </Project>
